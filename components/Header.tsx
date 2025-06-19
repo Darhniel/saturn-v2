@@ -25,11 +25,11 @@ export default function Header() {
                 <nav className='hidden lg:flex items-center gap-6'>
                     <Link href={"#funds"} className='flex gap-1 items-center text-white'>
                         Funds
-                        <ChevronDownIcon
+{/*                         <ChevronDownIcon
                             className='text-white'
                             width={16}
                             height={16}
-                        />
+                        /> */}
                     </Link>
                     <Link href={"/about"} className='text-white'>
                         About Us
