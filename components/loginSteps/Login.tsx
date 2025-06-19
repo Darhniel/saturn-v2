@@ -90,7 +90,7 @@ export default function Login({ localData, setLocalData, setLoading, setCurrentF
                     className="mx-auto"
                 />
             </div>
-            <div>
+            
                 <Link href={"/"}
                     <Image
                         src={"/blue-logo.svg"}
