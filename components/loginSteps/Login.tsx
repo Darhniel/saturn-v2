@@ -91,14 +91,15 @@ export default function Login({ localData, setLocalData, setLoading, setCurrentF
                 />
             </div>
             <div>
-                <Image
-                    src={"/blue-logo.svg"}
-                    width={156}
-                    height={36}
-                    alt='logo'
-                    className='mb-10'
-                />
-
+                <Link href={"/"}
+                    <Image
+                        src={"/blue-logo.svg"}
+                        width={156}
+                        height={36}
+                        alt='logo'
+                        className='mb-10'
+                    />
+                </Link>
                 <div className='p-6 bg-white rounded-2xl'>
                     <h1 className='font-bold text-2xl mb-1'>
                         Welcome Back
