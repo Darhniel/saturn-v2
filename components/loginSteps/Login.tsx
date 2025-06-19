@@ -91,7 +91,7 @@ export default function Login({ localData, setLocalData, setLoading, setCurrentF
                 />
             </div>
             
-                <Link href={"/"}
+                <Link href={"/"}>
                     <Image
                         src={"/blue-logo.svg"}
                         width={156}
