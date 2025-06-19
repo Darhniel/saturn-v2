@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ChevronDownIcon } from '@heroicons/react/16/solid'
+// import { ChevronDownIcon } from '@heroicons/react/16/solid'
 import { Manrope } from "next/font/google";
 
 const manRope = Manrope({
