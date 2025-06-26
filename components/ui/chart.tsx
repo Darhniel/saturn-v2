@@ -112,10 +112,12 @@ interface ChartTooltipContentProps extends TooltipProps<number, string> {
   hideIndicator?: boolean;
   label?: string | number;
   labelClassName?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   formatter?: (value: number, name: string, item: any, index: number, payload: any) => React.ReactNode;
   color?: string;
   nameKey?: string;
   labelKey?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   payload?: any[];
 }
 
@@ -133,7 +135,6 @@ function ChartTooltipContent({
   color,
   nameKey,
   labelKey,
-  ...rest
 }: ChartTooltipContentProps) {
   const { config } = useChart()
 
