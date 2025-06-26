@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { FormState } from '@/lib/types';
 import Image from 'next/image';
+import { ApiService } from '@/lib/services/api';
 
 interface OtpProps {
     email: string;
@@ -56,10 +57,10 @@ export default function OTP({
 
         try {
             // Verify OTP
-            // await ApiService.verifyOtp({
-            //     email: email,
-            //     otp: otp
-            // });
+            await ApiService.verifyOtp({
+                email: email,
+                otp: otp
+            });
             setCurrentForm(FormState.RESET_PASSWORD);
             setFormHistory(prev => [...prev, FormState.RESET_PASSWORD]);
         } catch (error) {

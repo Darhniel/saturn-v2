@@ -1,8 +1,8 @@
 "use client"
 import React, { useState } from 'react';
 import { FormDataType } from '@/lib/types';
-import ProgressBar from '@/components/ProgressBar';
-import Spinner from '@/components/Spinner';
+import ProgressBar from '@/components/saturn/ProgressBar';
+import Spinner from '@/components/saturn/Spinner';
 import Image from 'next/image';
 import StepOne from '@/components/steps/StepOne';
 import StepTwo from '@/components/steps/StepTwo';

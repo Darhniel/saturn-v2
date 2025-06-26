@@ -1,10 +1,10 @@
-import Hero from "@/components/Hero";
-import SectionOne from "@/components/SectionOne";
-import SectionTwo from "@/components/SectionTwo";
-import FAQs from '@/components/FAQs'
-import Nav from "@/components/Nav";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Hero from "@/components/saturn/Hero";
+import SectionOne from "@/components/saturn/SectionOne";
+import SectionTwo from "@/components/saturn/SectionTwo";
+import FAQs from '@/components/saturn/FAQs'
+import Nav from "@/components/saturn/Nav";
+import Header from "@/components/saturn/Header";
+import Footer from "@/components/saturn/Footer";
 
 export default function Home() {
   return (

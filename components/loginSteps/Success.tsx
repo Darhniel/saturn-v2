@@ -1,7 +1,19 @@
-import React from 'react';
+"use client"
+import React, { useEffect } from 'react';
 import Image from 'next/image';
 
-export default function Success() {
+interface SuccessProps {
+    setLocalData: React.Dispatch<React.SetStateAction<{
+        email: string,
+        password: string
+    }>>;
+}
+
+export default function Success({ setLocalData }: SuccessProps) {
+    useEffect(() => {
+        setLocalData({ email: '', password: '', });
+    }, []);
+
     return (
         <div className='flex flex-col justify-center items-center p-6 bg-[#FAFAFA] h-screen'>
             <Image
@@ -26,12 +38,12 @@ export default function Success() {
                 </h2>
 
                 <p className='text-[#606060] text-sm text-center mb-6'>
-                    Your password has been updated. 
+                    Your password has been updated.
                     <br />
                     Use your new password to log in securely.
                 </p>
 
-                <button 
+                <button
                     className="w-full rounded py-2 text-white bg-[#1639CE] cursor-pointer"
                     onClick={() => window.location.reload()}
                 >

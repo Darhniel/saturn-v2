@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react';
 import { StepProps } from '@/lib/types';
-import { ErrorIcon, EyeIcon, EyeOffIcon } from '../SVG';
+import { ErrorIcon, EyeIcon, EyeOffIcon } from '../saturn/SVG';
 
 export default function StepTwo({ data, onNext }: StepProps) {
     const [localData, setLocalData] = useState({

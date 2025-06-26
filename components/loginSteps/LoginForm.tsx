@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react";
-import Spinner from "../Spinner";
+import Spinner from "../saturn/Spinner";
 import { FormState } from '@/lib/types';
 import ResetPassword from "./ResetPassword";
 import Success from "./Success";
@@ -10,24 +10,23 @@ import Login from "./Login";
 
 export default function LoginForm() {
     const [currentForm, setCurrentForm] = useState(FormState.LOGIN);
-    
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+
     const [formHistory, setFormHistory] = useState<FormState[]>([FormState.LOGIN]);
 
-    // function goBack() {
-    //     // Create a copy of the history array
-    //     const newHistory = [...formHistory];
+    function goBack() {
+        // Create a copy of the history array
+        const newHistory = [...formHistory];
 
-    //     // Remove current state from history
-    //     newHistory.pop();
+        // Remove current state from history
+        newHistory.pop();
 
-    //     // Get previous state from history
-    //     const previousState = newHistory[newHistory.length - 1];
+        // Get previous state from history
+        const previousState = newHistory[newHistory.length - 1];
 
-    //     // Update both current form and history
-    //     setCurrentForm(previousState);
-    //     setFormHistory(newHistory);
-    // };
+        // Update both current form and history
+        setCurrentForm(previousState);
+        setFormHistory(newHistory);
+    };
 
     const [loading, setLoading] = useState(false)
     const [localData, setLocalData] = useState({
@@ -86,7 +85,9 @@ export default function LoginForm() {
                 );
             case FormState.SUCCESS:
                 return (
-                    <Success />
+                    <Success
+                        setLocalData={setLocalData}
+                    />
                 )
         }
     }
@@ -102,7 +103,7 @@ export default function LoginForm() {
                     :
                     <>
                         {renderForm()}
-                        {/* {
+                        {
                             currentForm !== FormState.LOGIN && currentForm !== FormState.SUCCESS && (
                                 <button
                                     onClick={goBack}
@@ -110,7 +111,8 @@ export default function LoginForm() {
                                 >
                                     ← Back
                                 </button>
-                            )} */}
+                            )
+                        }
                     </>
             }
         </>

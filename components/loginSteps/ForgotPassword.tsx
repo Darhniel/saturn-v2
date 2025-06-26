@@ -1,8 +1,9 @@
 "use client"
 import { FormState } from "@/lib/types";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from 'next/image';
-import { ErrorIcon } from "../SVG";
+import { ErrorIcon } from "../saturn/SVG";
+import { ApiService } from "@/lib/services/api";
 
 
 interface ForgotPasswordProps {
@@ -20,6 +21,10 @@ export default function ForgotPassword({ localData, setLoading, setLocalData, se
     const [errors, setErrors] = useState({
         emailError: false,
     });
+
+    useEffect(() => {
+        setLoading(false);
+    }, [])
 
     function validateEmail(email: string) {
         return /^\S+@\S+\.\S+$/.test(email);
@@ -46,7 +51,7 @@ export default function ForgotPassword({ localData, setLoading, setLocalData, se
 
         try {
             // Call API to send OTP
-            // await ApiService.forgotPassword({ email: localData.email });
+            await ApiService.forgotPassword({ email: localData.email });
             setCurrentForm(FormState.OTP);
             setFormHistory(prev => [...prev, FormState.OTP]);
         } catch (error) {

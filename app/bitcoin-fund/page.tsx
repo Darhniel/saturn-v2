@@ -2,9 +2,9 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { DocumentArrowDownIcon } from '@heroicons/react/24/outline'
-import Nav from "@/components/Nav";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Nav from "@/components/saturn/Nav";
+import Header from "@/components/saturn/Header";
+import Footer from "@/components/saturn/Footer";
 
 export default function page() {
     return (
@@ -23,7 +23,7 @@ export default function page() {
                                 The Saturn Bitcoin Trust Fund offers accredited investors a secure, tech-driven way to invest in Bitcoin without the complexities of direct ownership
                             </p>
                             <Link
-                                href="/"
+                                href="/login"
                                 className='text-white py-4 px-6 rounded-xl bg-[#1639CE]'
                             >
                                 Invest Now
@@ -73,9 +73,12 @@ export default function page() {
                                         <p className="text-[#121212] text-2xl mb-4">
                                             This fund follows a passive holding strategy, directly acquiring and storing Bitcoin to give investors pure exposure to the asset’s market performance
                                         </p>
-                                        <button className='text-white py-4 px-6 rounded-xl bg-[#1639CE]'>
+                                        <Link
+                                            href={"/login"}
+                                            className='text-white py-4 px-6 rounded-xl bg-[#1639CE]'
+                                        >
                                             Invest Now
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                                 <div className='border rounded-2xl p-5 pb-8 border-[#1639CE1A]'>
@@ -93,9 +96,11 @@ export default function page() {
                                         <p className="text-[#121212] text-2xl mb-4">
                                             At Saturn, your investments are managed with smart, diversified strategies—all backed by top-tier security and full transparency. We&apos;re here to help you trade smarter and grow faster.
                                         </p>
-                                        <button className='text-white py-4 px-6 rounded-xl bg-[#1639CE]'>
+                                        <Link
+                                            href={"/login"}
+                                            className='text-white py-4 px-6 rounded-xl bg-[#1639CE]'>
                                             Invest Now
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -115,9 +120,11 @@ export default function page() {
                                         <p className="text-[#121212] text-2xl mb-4">
                                             Delivering consistent, market-responsive returns
                                         </p>
-                                        <button className='text-white py-4 px-6 rounded-xl bg-[#1639CE]'>
+                                        <Link
+                                            href={"/login"}
+                                            className='text-white py-4 px-6 rounded-xl bg-[#1639CE]'>
                                             Invest Now
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                                 <div className='border rounded-3xl border-[#1639CE1A] lg:w-[59%] mix-blend-multiply relative bg-[#000D45] py-9 px-12'>

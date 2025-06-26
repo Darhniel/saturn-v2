@@ -4,7 +4,7 @@ import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { CalendarIcon } from '@heroicons/react/24/outline';
 import 'react-datepicker/dist/react-datepicker.css';
-import { CancelIcon, CheckIcon, ChevronDownIcon, ErrorIcon } from '../SVG';
+import { CancelIcon, CheckIcon, ChevronDownIcon, ErrorIcon } from '../saturn/SVG';
 
 export default function StepThree({ data, onNext }: StepProps) {
     const today = new Date();

@@ -1,9 +1,10 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { ErrorIcon, EyeIcon, EyeOffIcon } from "../SVG";
+import { ErrorIcon, EyeIcon, EyeOffIcon } from "../saturn/SVG";
 import { FormState } from "@/lib/types";
 import Link from 'next/link';
+import { ApiService } from '@/lib/services/api';
 
 
 interface LoginProps {
@@ -18,12 +19,15 @@ interface LoginProps {
 }
 
 export default function Login({ localData, setLocalData, setLoading, setCurrentForm, setFormHistory }: LoginProps) {
-    setLoading(false);
     const [showPassword, setShowPassword] = useState(false);
     const [errors, setErrors] = useState({
         emailError: false,
         passwordError: false,
     });
+
+    useEffect(()=> {
+        setLoading(false);
+    }, [setLoading])
 
     function togglePasswordVisibility() {
         setShowPassword(!showPassword);
@@ -42,7 +46,7 @@ export default function Login({ localData, setLocalData, setLoading, setCurrentF
         }
 
         if (name === "password") {
-            if (value.trim() === "" || value.length < 8) {
+            if (value.trim() === "" || value.length < 4) {
                 setErrors({ ...errors, passwordError: true });
             } else {
                 setErrors({ ...errors, passwordError: false })
@@ -60,24 +64,24 @@ export default function Login({ localData, setLocalData, setLoading, setCurrentF
         return false;
     };
 
-    // async function handleSubmit(e: React.FormEvent) {
-    //     e.preventDefault();
-    //     setLoading(true);
+    async function handleSubmit(e: React.FormEvent) {
+        e.preventDefault();
+        setLoading(true);
 
-    //     try {
-    //         // await ApiService.login(localData);
-    //         // window.location.href = 'https://saturnuserapp-mirror.vercel.app/dashboard';
-    //         // Handle successful login here (e.g., redirect)
-    //     } catch (error) {
-    //         let errorMessage = 'An unexpected error occurred';
-    //         if (error instanceof Error) {
-    //             errorMessage = error.message;
-    //         }
-    //         alert(errorMessage);
-    //     } finally {
-    //         setLoading(false);
-    //     }
-    // };
+        try {
+            await ApiService.login(localData);
+            window.location.href = 'https://saturnuserapp-mirror.vercel.app/dashboard';
+            // Handle successful login here (e.g., redirect)
+        } catch (error) {
+            let errorMessage = 'An unexpected error occurred';
+            if (error instanceof Error) {
+                errorMessage = error.message;
+            }
+            alert(errorMessage);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
         <div className='flex gap-8 items-center p-6 bg-[#FAFAFA]'>
@@ -110,7 +114,7 @@ export default function Login({ localData, setLocalData, setLoading, setCurrentF
                         Log in to manage your portfolio and track your investments effortlessly.
                     </p>
 
-                    <form>
+                    <form onSubmit={handleSubmit}>
                         <div className='mb-6'>
                             <label htmlFor="email" className='font-medium text-[#121212] block mb-2'>
                                 Email Address
@@ -161,7 +165,7 @@ export default function Login({ localData, setLocalData, setLoading, setCurrentF
                                 <div className="flex items-center gap-1">
                                     <ErrorIcon />
                                     <span className="text-sm font-medium text-red-600">
-                                        Incorrect password.
+                                        Incomplete password.
                                     </span>
                                 </div>
                             )}

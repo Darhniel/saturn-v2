@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { StepProps } from "@/lib/types";
-import { ErrorIcon } from "../SVG";
+import { ErrorIcon } from "../saturn/SVG";
 import Link from "next/link";
 
 export default function StepOne({ data, onNext }: StepProps) {
@@ -102,7 +102,7 @@ export default function StepOne({ data, onNext }: StepProps) {
         referralError: value.trim() === "",
       }));
     }
-    
+
     setLocalData(newLocalData);
   };
 
@@ -280,7 +280,7 @@ export default function StepOne({ data, onNext }: StepProps) {
             </div>
           )}
         </div>
-        
+
         <button
           type="submit"
           className={`w-full rounded py-2 text-white transition-colors ${complete() ? "bg-[#1639CE] cursor-pointer" : "bg-[#D9D9D9] cursor-not-allowed"}`}

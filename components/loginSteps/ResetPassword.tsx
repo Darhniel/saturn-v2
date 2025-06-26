@@ -2,8 +2,9 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { FormState } from '@/lib/types';
-import { ErrorIcon, EyeIcon, EyeOffIcon } from "../SVG";
+import { ErrorIcon, EyeIcon, EyeOffIcon } from "../saturn/SVG";
 import { Check } from "lucide-react";
+import { ApiService } from '@/lib/services/api';
 
 interface ResetPasswordProps {
     email: string;
@@ -125,11 +126,11 @@ export default function ResetPassword({
 
         try {
             // Reset password
-            // await ApiService.resetPassword({
-            //     email: email,
-            //     newPassword: passwordData.newPassword,
-            //     otp: otp
-            // });
+            await ApiService.resetPassword({
+                email: email,
+                newPassword: passwordData.newPassword,
+                otp: otp
+            });
             setCurrentForm(FormState.SUCCESS);
             setFormHistory(prev => [...prev, FormState.SUCCESS]);
         } catch (error) {

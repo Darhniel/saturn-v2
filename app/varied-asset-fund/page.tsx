@@ -2,9 +2,9 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { DocumentArrowDownIcon } from '@heroicons/react/24/outline'
-import Nav from "@/components/Nav";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Nav from "@/components/saturn/Nav";
+import Header from "@/components/saturn/Header";
+import Footer from "@/components/saturn/Footer";
 
 export default function page() {
     return (
@@ -23,7 +23,7 @@ export default function page() {
                                 The VA Fund focuses on high-growth companies and digital assets leading the way in technology innovation
                             </p>
                             <Link
-                                href="/"
+                                href="/login"
                                 className='text-white py-4 px-6 rounded-xl bg-[#1639CE]'
                             >
                                 Invest Now
@@ -73,9 +73,12 @@ export default function page() {
                                         <p className="text-[#121212] text-2xl mb-4">
                                             A professionally managed crypto fund designed to grow your investment while minimizing risk. Let our experts navigate the market for you, so you can invest with confidence.
                                         </p>
-                                        <button className='text-white py-4 px-6 rounded-xl bg-[#1639CE]'>
+                                        <Link
+                                            href={'/login'}
+                                            className='text-white py-4 px-6 rounded-xl bg-[#1639CE]'
+                                        >
                                             Invest Now
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                                 <div className='border rounded-2xl p-5 pb-8 border-[#1639CE1A]'>
@@ -93,9 +96,12 @@ export default function page() {
                                         <p className="text-[#121212] text-2xl mb-4">
                                             The Varied Asset Fund blends traditional and digital investments to reduce risk and build long-term financial security, all managed by expert strategists. It’s a smart, all-in-one option for growth, income, and stability
                                         </p>
-                                        <button className='text-white py-4 px-6 rounded-xl bg-[#1639CE]'>
+                                        <Link
+                                            href={"/login"}
+                                            className='text-white py-4 px-6 rounded-xl bg-[#1639CE]'
+                                        >
                                             Invest Now
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -115,9 +121,11 @@ export default function page() {
                                         <p className="text-[#121212] text-2xl mb-4">
                                             Delivering consistent, market-responsive returns
                                         </p>
-                                        <button className='text-white py-4 px-6 rounded-xl bg-[#1639CE]'>
+                                        <Link
+                                            href={"/login"}
+                                            className='text-white py-4 px-6 rounded-xl bg-[#1639CE]'>
                                             Invest Now
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                                 <div className='border rounded-3xl border-[#1639CE1A] lg:w-[59%] mix-blend-multiply relative bg-[#000D45] py-9 px-12'>
