@@ -148,13 +148,13 @@ export default function page() {
                                         <p className="text-2xl mb-8 text-center">
                                             Gain access to real-time insights, detailed reports, and expert advice to help you stay ahead in the market and make confident investment decisions.
                                         </p>
-                                        <button className='text-white py-4 px-6 rounded-xl bg-[#1639CE] flex gap-3 items-center mx-auto'>
+                                        <a href="/brochure/The Specialised AI Fund.pdf" className='text-white py-4 px-6 rounded-xl bg-[#1639CE] flex gap-3 items-center mx-auto' download>
                                             Download Brochure
                                             <DocumentArrowDownIcon
                                                 width={24}
                                                 height={24}
                                             />
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
