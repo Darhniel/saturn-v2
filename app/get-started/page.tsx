@@ -20,6 +20,7 @@ export default function Page() {
 
     const [formData, setFormData] = useState<FormDataType>({
         fullName: "",
+        businessName: "",
         email: "",
         phone: "",
         investmentInterest: "",
@@ -33,11 +34,12 @@ export default function Page() {
         preferredPortfolioTypes: [],
         files: [],
         file: {},
-        agree: false
+        agree: false,
+        userType: "individual"
     });
 
     const [success, setSuccess] = useState(false);
-
+    
     const handleNext = async (stepData: Partial<FormDataType>) => {
         setFormData((prev) => ({ ...prev, ...stepData }));
 
@@ -45,8 +47,15 @@ export default function Page() {
             setCurrentStepIndex(1);
         }
 
-        if (currentStep === 1) setStepOrder([1, 2, 3, 4, 5]);
+        if (currentStep === 1) {
+            if (stepData.userType === "business") {
+                setStepOrder([1, 2, 3, 5])
+            } else {
+                setStepOrder([1, 2, 3, 4, 5]);
+            }
+        }
 
+            
         try {
             if (currentStepIndex === 1) {
                 // Handle registration
