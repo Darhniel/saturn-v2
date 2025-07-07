@@ -6,7 +6,8 @@ import { ErrorIcon, EyeIcon, EyeOffIcon } from '../saturn/SVG';
 export default function StepTwo({ data, onNext }: StepProps) {
     const [localData, setLocalData] = useState({
         password: data.password || "",
-        confirmPassword: data.confirmPassword || ""
+        confirmPassword: data.confirmPassword || "",
+        userType: data.userType
     });
 
     const [showPassword, setShowPassword] = useState(false);
