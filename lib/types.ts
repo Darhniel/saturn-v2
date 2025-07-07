@@ -1,20 +1,21 @@
 export type FormDataType = {
-    fullName: string;
+    fullName?: string;
     email: string;
+    businessName?: string;
     phone: string;
     investmentInterest: string;
     investmentSize: string;
     referral: string;
     password: string;
     confirmPassword: string;
-    dateOfBirth: string;
-    address: string;
+    dateOfBirth?: string;
+    address?: string;
     investmentAppetite: string;
     preferredPortfolioTypes: string[];
     files: File[];
     file: Record<string, string>;
     agree: boolean;
-    // userType: "individual";
+    userType: "individual" | "business";
 };
 
 export type StepProps = {
