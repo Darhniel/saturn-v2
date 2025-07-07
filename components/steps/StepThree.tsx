@@ -31,7 +31,8 @@ export default function StepThree({ data, onNext }: StepProps) {
         dateOfBirth: data.dateOfBirth,
         address: data.address,
         investmentAppetite: data.investmentAppetite,
-        preferredPortfolioTypes: data.preferredPortfolioTypes
+        preferredPortfolioTypes: data.preferredPortfolioTypes,
+        userType: data.userType
     });
 
     const [errors, setErrors] = useState({
@@ -86,8 +87,14 @@ export default function StepThree({ data, onNext }: StepProps) {
     };
 
     function complete() {
-        if (errors.dateError || errors.addressError || errors.investmentError || errors.portfolioError || localData.dateOfBirth === "" || localData.address === "" || localData.investmentAppetite === "" || localData.preferredPortfolioTypes.length === 0) {
-            return true;
+        if (localData.userType === "individual") {
+            if (errors.dateError || errors.addressError || errors.investmentError || errors.portfolioError || localData.dateOfBirth === "" || localData.address === "" || localData.investmentAppetite === "" || localData.preferredPortfolioTypes.length === 0) {
+                return true;
+            }
+        } else {
+            if (errors.investmentError || errors.portfolioError || localData.investmentAppetite === "" || localData.preferredPortfolioTypes.length === 0) {
+                return true;
+            }
         }
 
         return false;
@@ -107,7 +114,7 @@ export default function StepThree({ data, onNext }: StepProps) {
             </p>
             <form onSubmit={handleSubmit}>
                 {/* Date of Birth */}
-                <div className='w-full mb-4'>
+                <div className={`w-full mb-4 ${localData.userType === "business" ? "hidden" : ""}`}>
                     <label className="block text-base font-medium text-[#1F1E22] mb-2" htmlFor="date">
                         Date of Birth
                     </label>
@@ -154,7 +161,7 @@ export default function StepThree({ data, onNext }: StepProps) {
                 </div>
 
                 {/* House Address */}
-                <div className="mb-4">
+                <div className={`mb-4 ${localData.userType === "business" ? "hidden" : ""}`}>
                     <label className="block text-base font-medium text-[#1F1E22] mb-2" htmlFor="address">
                         Address
                     </label>
