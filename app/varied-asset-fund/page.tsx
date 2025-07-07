@@ -128,7 +128,7 @@ export default function page() {
                                         </Link>
                                     </div>
                                 </div>
-                                <div className='border rounded-3xl border-[#1639CE1A] lg:w-[59%] mix-blend-multiply relative bg-[#000D45] py-9 px-12'>
+                                <div className='border rounded-3xl border-[#1639CE1A] lg:w-[59%] mix-blend-multiply relative bg-[#000D45] p-9'>
                                     <div className='absolute inset-0 rounded-3xl'>
                                         <Image
                                             src={"/background.jpg"}
@@ -146,7 +146,11 @@ export default function page() {
                                         <p className="text-2xl mb-8 text-center">
                                             Gain access to real-time insights, detailed reports, and expert advice to help you stay ahead in the market and make confident investment decisions.
                                         </p>
-                                        <a href="/brochure/The Varied Asset Fund.pdf" className='text-white py-4 px-6 rounded-xl bg-[#1639CE] flex gap-3 items-center mx-auto' download>
+                                        <a
+                                            href='/brochure/The Varied Asset Fund.pdf'
+                                            className='text-white py-4 px-6 rounded-xl bg-[#1639CE] flex gap-3 items-center mx-auto w-fit'
+                                            download    
+                                        >
                                             Download Brochure
                                             <DocumentArrowDownIcon
                                                 width={24}
