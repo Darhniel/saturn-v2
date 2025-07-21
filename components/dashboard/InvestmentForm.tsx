@@ -26,7 +26,7 @@ export function InvestmentFormOne({ data, onNext, setInvestmentData }: Investmen
 
     return (
         <div
-            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 mt-0"
+            className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 mt-0"
             onClick={() => setInvestmentData(prev => ({ ...prev, isFund: false }))}
         >
             <div
@@ -49,14 +49,14 @@ export function InvestmentFormOne({ data, onNext, setInvestmentData }: Investmen
                                 id="bankTransfer"
                                 name="withdrawalMethod"
                                 value="Bank Transfer"
-                                className="peer mb-3 block h-5 w-5 cursor-pointer appearance-none opacity-0 border-gray-300 focus:ring-purple"
+                                className="peer mb-3 block h-5 w-5 cursor-pointer appearance-none opacity-0 border-gray-300 focus:ring-[#8627FF]"
                                 checked={localData.withdrawalMethod === "Bank Transfer"}
                                 onChange={handleChange}
                             />
-                            <div className="absolute top-1 h-5 w-5 rounded-full border border-[#D0D5DD] transition-all peer-checked:border-purple"></div>
-                            <div className="absolute left-1 top-2 h-3 w-3 rounded-full peer-checked:block peer-checked:bg-purple"></div>
+                            <div className="absolute top-1 h-5 w-5 rounded-full border border-[#D0D5DD] transition-all peer-checked:border-[#8627FF]"></div>
+                            <div className="absolute left-1 top-2 h-3 w-3 rounded-full peer-checked:block peer-checked:bg-[#8627FF]"></div>
                         </div>
-                        <span className={`text-base ml-4 ${localData.withdrawalMethod === "Bank Transfer" ? "font-semibold text-purple" : "text-gray-800"}`}>
+                        <span className={`text-base ml-4 ${localData.withdrawalMethod === "Bank Transfer" ? "font-semibold text-[#8627FF]" : "text-gray-800"}`}>
                             Nigerian Banks
                         </span>
                     </label>
@@ -68,21 +68,21 @@ export function InvestmentFormOne({ data, onNext, setInvestmentData }: Investmen
                                 id="crypto"
                                 name="withdrawalMethod"
                                 value="Cryptocurrency"
-                                className="peer mb-3 block h-5 w-5 cursor-pointer appearance-none opacity-0 border-gray-300 focus:ring-purple"
+                                className="peer mb-3 block h-5 w-5 cursor-pointer appearance-none opacity-0 border-gray-300 focus:ring-[#8627FF]"
                                 checked={localData.withdrawalMethod === "Cryptocurrency"}
                                 onChange={handleChange}
                             />
-                            <div className="absolute top-1 h-5 w-5 rounded-full border border-[#D0D5DD] transition-all peer-checked:border-purple"></div>
-                            <div className="absolute left-1 top-2 h-3 w-3 rounded-full peer-checked:block peer-checked:bg-purple"></div>
+                            <div className="absolute top-1 h-5 w-5 rounded-full border border-[#D0D5DD] transition-all peer-checked:border-[#8627FF]"></div>
+                            <div className="absolute left-1 top-2 h-3 w-3 rounded-full peer-checked:block peer-checked:bg-[#8627FF]"></div>
                         </div>
-                        <span className={`text-base ml-4 ${localData.withdrawalMethod === "Cryptocurrency" ? "font-semibold text-purple" : "text-gray-800"}`}>
+                        <span className={`text-base ml-4 ${localData.withdrawalMethod === "Cryptocurrency" ? "font-semibold text-[#8627FF]" : "text-gray-800"}`}>
                             Wallet Address
                         </span>
                     </label>
 
                     <button
                         type="submit"
-                        className={`w-full py-2 px-4 ${localData.withdrawalMethod === "" ? "bg-gray-400" : "bg-purple"} text-white rounded hover:bg-purple-700 transition-colors`}
+                        className={`w-full py-2 px-4 ${localData.withdrawalMethod === "" ? "bg-gray-400" : "bg-[#8627FF]"} text-white rounded transition-colors`}
                         disabled={localData.withdrawalMethod === ""}
                     >
                         Proceed
@@ -201,7 +201,7 @@ export function InvestmentFormTwo({ data, onNext, setInvestmentData }: Investmen
                 className="bg-white rounded-2xl p-6 w-full max-w-[22.5rem] md:max-w-sm xl:max-w-[30rem]"
                 onClick={(e) => { e.stopPropagation() }}
             >
-                <div className="p-4 w-fit mx-auto my-4 bg-[#F3E9FF] rounded-full text-purple">
+                <div className="p-4 w-fit mx-auto my-4 bg-[#F3E9FF] rounded-full text-[#8627FF]">
                     {data.withdrawalMethod === 'Bank Transfer' ? <BankIcon /> : <CircleStackIcon width={24} />}
                 </div>
                 <h2 className="text-2xl font-bold text-center mb-4">
@@ -292,7 +292,7 @@ export function InvestmentFormTwo({ data, onNext, setInvestmentData }: Investmen
                                         id="accountNumber"
                                         type="text"
                                         placeholder="Enter Amount Number"
-                                        className="w-full p-3 border border-[#D9D9D9] text-black rounded-xl focus:outline-none focus:ring-2 focus:ring-purple mb-2"
+                                        className="w-full p-3 border border-[#D9D9D9] text-black rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8627FF] mb-2"
                                         name='accountNumber'
                                         value={localData.accountNumber}
                                         onChange={handleChange}
@@ -448,7 +448,7 @@ export function InvestmentFormTwo({ data, onNext, setInvestmentData }: Investmen
                                         id="walletAddress"
                                         type="text"
                                         placeholder="Enter Wallet Address"
-                                        className="w-full p-3 border border-[#D9D9D9] text-black rounded-xl focus:outline-none focus:ring-2 focus:ring-purple mb-2"
+                                        className="w-full p-3 border border-[#D9D9D9] text-black rounded-xl focus:outline-none focus:ring-2 focus:ring-[#8627FF] mb-2"
                                         name='walletAddress'
                                         value={localData.walletAddress}
                                         onChange={handleChange}

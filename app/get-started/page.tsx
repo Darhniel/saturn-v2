@@ -10,6 +10,7 @@ import StepThree from '@/components/steps/StepThree';
 import StepFour from '@/components/steps/StepFour';
 import StepFive from '@/components/steps/StepFive';
 import Success from '@/components/steps/Success'
+import { ApiService } from '@/lib/services/api';
 
 
 export default function Page() {
@@ -39,13 +40,16 @@ export default function Page() {
     });
 
     const [success, setSuccess] = useState(false);
-    
+
     const handleNext = async (stepData: Partial<FormDataType>) => {
         setFormData((prev) => ({ ...prev, ...stepData }));
 
-        if (currentStepIndex === 0) {
-            setCurrentStepIndex(1);
-        }
+        const updatedData = { ...formData, ...stepData };
+        setFormData(updatedData);
+
+        // if (currentStepIndex === 0) {
+        //     setCurrentStepIndex(1);
+        // }
 
         if (currentStep === 1) {
             if (stepData.userType === "business") {
@@ -55,37 +59,48 @@ export default function Page() {
             }
         }
 
-            
+
         try {
-            if (currentStepIndex === 1) {
+            if (currentStepIndex === 0) {
                 // Handle registration
                 setLoading(true);
                 // const result = await ApiService.register(stepData);
                 // if (result.error) throw new Error(result.message);
-                setCurrentStepIndex(2);
-            } else if (currentStepIndex === 2) {
+                setCurrentStepIndex(1);
+            } else if (currentStepIndex === 1) {
                 // Handle investment details
                 setLoading(true);
                 // await ApiService.submitInvestment(stepData);
-                setCurrentStepIndex(3);
-            } else if (currentStepIndex === 3) {
+                setCurrentStepIndex(2);
+            } else if (currentStepIndex === 2) {
                 // Handle bank details
                 setLoading(true);
                 // await ApiService.submitBankDetails(stepData);
-                setCurrentStepIndex(4);
+                setCurrentStepIndex(3);
+            } else if (currentStepIndex === 3) {
+                // Handle final KYC submission
+                setLoading(true);
+                if (formData.userType === "business") {
+                    // const response = await ApiService.submitKYC(stepData);
+                    // if (!response.ok) throw new Error("KYC submission failed");
+                    console.log(stepData)
+                    setSuccess(true);
+                } else {
+                    setCurrentStepIndex(4);
+                }
             } else if (currentStepIndex === stepOrder.length - 1) {
                 // Handle final KYC submission
                 setLoading(true);
                 // const response = await ApiService.submitKYC(stepData);
                 // if (!response.ok) throw new Error("KYC submission failed");
                 setSuccess(true);
-                console.log(formData)
             }
         } catch (error) {
             console.error("Submission failed:", error);
             alert(error instanceof Error ? error.message : "An error occurred");
         } finally {
             setLoading(false);
+            console.log(updatedData)
         }
     };
 

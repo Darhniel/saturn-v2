@@ -76,6 +76,7 @@ export default function Login({ localData, setLocalData, setLoading, setCurrentF
             let errorMessage = 'An unexpected error occurred';
             if (error instanceof Error) {
                 errorMessage = error.message;
+                console.log(error)
             }
             alert(errorMessage);
         } finally {

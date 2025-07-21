@@ -1,3 +1,5 @@
+import React from "react";
+
 export type FormDataType = {
     fullName?: string;
     email: string;
@@ -12,8 +14,8 @@ export type FormDataType = {
     address?: string;
     investmentAppetite: string;
     preferredPortfolioTypes: string[];
-    files: File[];
-    file: Record<string, string>;
+    files?: File[];
+    file?: Record<string, string>;
     agree: boolean;
     userType: "individual" | "business";
 };
@@ -121,3 +123,42 @@ export type InvestmentFormProps = {
     setInvestmentData: React.Dispatch<React.SetStateAction<InvestmentType>>;
     setFundStep: React.Dispatch<React.SetStateAction<number>>;
 };
+
+export type KycType = {
+    fullName: string;
+    bvn: string;
+    dateOfBirth: string;
+    file: Record<string, string>;
+    isVerified: boolean;
+};
+
+export type KycFormProps = {
+    data: KycType;
+    onNext: (data: Partial<KycType>) => void;
+    setKycData: React.Dispatch<React.SetStateAction<KycType>>;
+};
+
+export type UpdateKycType = {
+    idType: string;
+    idNumber: string;
+    idFile: string;
+    country: string;
+    address: string;
+    city: string;
+    billType: string;
+    billTypeFile: string;
+    isUpdated: boolean;
+}
+
+export type UpdateKycProps = {
+    data: UpdateKycType;
+    onNext: (data: Partial<UpdateKycType>) => void;
+    setUpdateKyc: React.Dispatch<React.SetStateAction<UpdateKycType>>;
+}
+
+export interface UploadedFile {
+    file: File;
+    previewUrl: string;
+    progress: number;
+    error?: string;
+}

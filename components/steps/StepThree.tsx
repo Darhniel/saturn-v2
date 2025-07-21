@@ -104,6 +104,7 @@ export default function StepThree({ data, onNext }: StepProps) {
         e.preventDefault();
         onNext(localData);
     };
+    
     return (
         <div className="mx-auto w-full max-w-[35rem] rounded-2xl border border-[#F2F2F2] bg-white p-6">
             <h2 className="mb-4 text-2xl font-bold">

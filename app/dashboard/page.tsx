@@ -8,7 +8,7 @@ import DateRangePicker from "@/components/dashboard/DatePicker";
 import { Investment, InvestmentsTable } from "@/components/investment-table";
 import { RequestFormFive, RequestFormFour, RequestFormOne, RequestFormThree, RequestFormTwo } from "@/components/dashboard/RequestForm";
 import { InvestmentFormFive, InvestmentFormFour, InvestmentFormOne, InvestmentFormThree, InvestmentFormTwo } from "@/components/dashboard/FundInvestment";
-import { InvestmentDataType, RequestDataType } from "@/lib/types";
+import { InvestmentDataType, KycType, RequestDataType, UpdateKycType } from "@/lib/types";
 import { InvestmentDetailsModal } from "@/components/investment-table-modal";
 import { InvestmentReceiptPage } from "@/components/dashboard/Receipt";
 import { Card, CardContent } from "@/components/ui/card";
@@ -20,6 +20,8 @@ import {
     ResponsiveContainer,
     Tooltip,
 } from "recharts";
+import { KycFormOne, KycFormTwo, Success } from "@/components/dashboard/KYC";
+import { UpgradeKycOne, UpgradeKycThree, UpgradeKycTwo, UpgradeKycZero } from "@/components/dashboard/UpgradeKyc";
 
 const data = [
     { name: "BTC Fund", value: 55, color: "#A259FF" },
@@ -109,6 +111,8 @@ export default function DashboardPage() {
     const [selectedTransaction, setSelectedTransaction] = useState<Investment | null>(null);
     const [fundStep, setFundStep] = useState(1);
     const [reqStep, setReqStep] = useState(1);
+    const [kycStep, setKycStep] = useState(1);
+    const [updateKycStep, setUpdateKycStep] = useState(0);
     const [investmentData, setInvestmentData] = useState<InvestmentDataType>({
         amount: "",
         investment: "",
@@ -136,6 +140,20 @@ export default function DashboardPage() {
             amount: investment.totalEarnings.toString()
         }));
     };
+
+    const [kycData, setKycData] = useState<KycType>({
+        fullName: "",
+        bvn: "",
+        isVerified: false,
+        dateOfBirth: "",
+        file: {}
+    });
+
+    async function handleNextKyc(stepData: Partial<KycType>) {
+        setKycData((prev) => ({...prev, ...stepData}))
+
+        setKycStep(kycStep + 1)
+    }
 
     async function handleNext(stepData: Partial<InvestmentDataType>) {
         setInvestmentData((prev) => ({ ...prev, ...stepData }));
@@ -182,6 +200,52 @@ export default function DashboardPage() {
                 return null;
         };
     };
+
+    const renderKycStep = () => {
+        switch (kycStep) {
+            case 1:
+                return <KycFormOne data={kycData} onNext={handleNextKyc} setKycData={setKycData} />;
+            case 2:
+                return <KycFormTwo data={kycData} onNext={handleNextKyc} setKycData={setKycData} />;
+            case 3:
+                return <Success data={kycData} onNext={handleNextKyc} setKycData={setKycData} />;
+            default:
+                return null;
+        };
+    };
+
+    const [updateKyc, setUpdateKyc] = useState<UpdateKycType>({
+        idType: "",
+        idNumber: "",
+        idFile: "",
+        country: "",
+        address: "",
+        city: "",
+        billType: "",
+        billTypeFile: "",
+        isUpdated: false
+    })
+
+    async function handleNextUpdateKyc(stepData: Partial<UpdateKycType>) {
+        setUpdateKyc((prev) => ({...prev, ...stepData}))
+
+        setUpdateKycStep(updateKycStep + 1)
+    }
+
+    const renderUpdateKycStep = () => {
+        switch (updateKycStep) {
+            case 1:
+                return <UpgradeKycOne data={updateKyc} onNext={handleNextUpdateKyc} setUpdateKyc={setUpdateKyc} />;
+            case 2:
+                return <UpgradeKycTwo data={updateKyc} onNext={handleNextUpdateKyc} setUpdateKyc={setUpdateKyc} />;
+            case 3:
+                return <UpgradeKycThree data={updateKyc} onNext={handleNextUpdateKyc} setUpdateKyc={setUpdateKyc} />;
+            case 4:
+                return <Success data={kycData} onNext={handleNextKyc} setKycData={setKycData} />;
+            default:
+                return <UpgradeKycZero data={updateKyc} onNext={handleNextUpdateKyc} setUpdateKyc={setUpdateKyc} />;
+        };
+    }
 
     const amount = 50000
 
@@ -264,6 +328,68 @@ export default function DashboardPage() {
                     </div>
                 </div>
             </header>
+
+            <div className="p-4 bg-[#F3E9FF] rounded-lg flex items-center
+            justify-between mb-6">
+                <div className="flex items-center gap-0.5">
+                    <Image 
+                        src={"/images/dashboard/shield.svg"}
+                        width={48}
+                        height={48}
+                        alt="icon"
+                    />
+                    <div
+                        className="flex flex-col"
+                    >
+                        <h3
+                            className="text-base font-bold"
+                        >
+                            Verify your identity
+                        </h3>
+                        <p
+                            className="text-sm text-[#414141]"
+                        >
+                            Complete ID verification to continue using Saturn without limits.
+                        </p>
+                    </div>
+                </div>
+                <button 
+                    className="bg-[#8627FF] rounded-sm p-2.5 text-[#F9FAFB] cursor-pointer"
+                    onClick={() => setKycData(prev => ({ ...prev, isVerified: true }))}
+                >
+                    Start Verification
+                </button>
+            </div>
+
+            <div className="p-4 bg-[#F3E9FF] rounded-lg flex items-center
+            justify-between mb-6">
+                <div className="flex items-center gap-0.5">
+                    <Image 
+                        src={"/images/dashboard/shield.svg"}
+                        width={48}
+                        height={48}
+                        alt="icon"
+                    />
+                    <div className="flex flex-col">
+                        <h3
+                            className="text-base font-bold"
+                        >
+                            Verify your identity
+                        </h3>
+                        <p
+                            className="text-sm text-[#414141]"
+                        >
+                            Increase your trasnaction limits by upgrading KYC 2.
+                        </p>
+                    </div>
+                </div>
+                <button 
+                    className="bg-[#8627FF] rounded-sm p-2.5 text-[#F9FAFB] cursor-pointer"
+                    onClick={() => setUpdateKyc(prev => ({ ...prev, isUpdated: true }))}
+                >
+                    Upgrade Verification
+                </button>
+            </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
                 <div className="bg-white bg-[url('/images/dashboard/background.png')] bg-cover rounded-2xl p-6 flex justify-center items-center flex-col border border-[#EBEBEB]">
@@ -576,6 +702,15 @@ export default function DashboardPage() {
             {
                 requestData.isRequest &&
                 renderReqStep()
+            }
+
+            {
+                kycData.isVerified &&
+                renderKycStep()
+            }
+            {
+                updateKyc.isUpdated &&
+                renderUpdateKycStep()
             }
         </div>
     );

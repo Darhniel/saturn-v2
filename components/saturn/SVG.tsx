@@ -205,6 +205,31 @@ export function LoadingSpinner({ className = "h-20 w-20 animate-spin text-[#0033
     );
 }
 
+export function ActivityIndicator({ className = "h-6 w-6 animate-spin text-white", stroke = "currentColor" }: { className?: string; stroke?: string }) {
+    return (
+        <svg
+            className={className}
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+        >
+            <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke={stroke}
+                strokeWidth="4"
+            />
+            <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8v8H4z"
+            />
+        </svg>
+    );
+}
+
 export function SettingsIcon({ href = false }: { href?: boolean; }) {
     return (
         <svg

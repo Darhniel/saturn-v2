@@ -37,18 +37,17 @@ export const ApiService = {
     },
 
     async login(data: { email: string; password: string }) {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT);
+        // const controller = new AbortController();
+        // const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT);
 
         try {
             const response = await fetch(`${API_BASE}/login`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data),
-                signal: controller.signal,
             });
 
-            clearTimeout(timeoutId);
+            // clearTimeout(timeoutId);
 
             if (!response.ok) {
                 const errorData = await response.json();
@@ -78,7 +77,7 @@ export const ApiService = {
 
     async forgotPassword(data: { email: string }) {
         const controller = new AbortController();
-        // const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT);
+        const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT);
 
         try {
             const response = await fetch(`${API_BASE}/forgot-password`, {
@@ -88,7 +87,7 @@ export const ApiService = {
                 signal: controller.signal,
             });
 
-            // clearTimeout(timeoutId);
+            clearTimeout(timeoutId);
 
             if (!response.ok) {
                 const errorData = await response.json();
