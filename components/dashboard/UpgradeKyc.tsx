@@ -754,6 +754,7 @@ export function UpgradeKycThree({ data, onNext, setUpdateKyc }: UpdateKycProps) 
 }
 
 export function UpgradeKycZero({ data, onNext, setUpdateKyc }: UpdateKycProps) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [localData, setLocalData] = useState({
         country: data.country,
         address: data.address,

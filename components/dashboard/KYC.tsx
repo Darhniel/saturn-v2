@@ -5,8 +5,8 @@ import { CalendarIcon } from '@heroicons/react/24/outline';
 import { ErrorIcon } from '../saturn/SVG';
 import Webcam from 'react-webcam';
 import Image from 'next/image';
-import Spinner from '../saturn/Spinner';
-import { LoadingSpinner } from '../saturn/SVG';
+// import Spinner from '../saturn/Spinner';
+// import { LoadingSpinner } from '../saturn/SVG';
 
 export function KycFormOne({ data, onNext, setKycData }: KycFormProps) {
     const today = new Date();
@@ -198,10 +198,11 @@ export function KycFormOne({ data, onNext, setKycData }: KycFormProps) {
     )
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export function KycFormTwo({ data, onNext, setKycData }: KycFormProps) {
     const [selfieTaken, setSelfieTaken] = useState<string | null>(null);
     const [showWebcam, setShowWebcam] = useState(false);
-    const [loading, setLoading] = useState(false)
+    // const [loading, setLoading] = useState(false)
 
     const webcamRef = useRef<Webcam>(null);
 
@@ -379,7 +380,7 @@ export function Success({ setKycData }: KycFormProps) {
                     </h2>
 
                     <p className='text-[#8C8B90] text-sm text-center mb-6'>
-                        Well done. We'd let you know as soon as you're good to go
+                        Well done. We&apos;d let you know as soon as you&apos;re good to go
                     </p>
 
                     <button
