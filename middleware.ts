@@ -6,7 +6,7 @@ export function middleware(req: NextRequest) {
 
   // console.log(token)
 
-  if (!token && req.nextUrl.pathname.startsWith('/register')) {
+  if (!token && req.nextUrl.pathname.startsWith('/unknown')) {
     return NextResponse.redirect(new URL('/login', req.url));
   }
 
